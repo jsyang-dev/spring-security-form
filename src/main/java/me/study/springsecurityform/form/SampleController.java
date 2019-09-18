@@ -13,7 +13,7 @@ public class SampleController {
         if (principal == null) {
             model.addAttribute("message", "Hello Spring Security");
         } else {
-            model.addAttribute("message", "Hello " + principal.getName());
+            model.addAttribute("message", "Hello, " + principal.getName());
         }
         return "index";
     }
@@ -26,13 +26,13 @@ public class SampleController {
 
     @GetMapping("/dashboard")
     public String dashboard(Model model, Principal principal) {
-        model.addAttribute("message", "Hello " + principal.getName());
+        model.addAttribute("message", "Hello, " + principal.getName());
         return "dashboard";
     }
 
     @GetMapping("/admin")
     public String admin(Model model, Principal principal) {
-        model.addAttribute("message", "Hello Admin," + principal.getName());
+        model.addAttribute("message", "Hello Admin, " + principal.getName());
         return "admin";
     }
 }
