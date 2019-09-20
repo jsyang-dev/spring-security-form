@@ -1,5 +1,7 @@
 package me.study.springsecurityform.account;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,7 +52,7 @@ public class Account {
         this.role = role;
     }
 
-    void encodePassword() {
-        this.password = "{noop}" + this.getPassword();
+    void encodePassword(PasswordEncoder passwordEncoder) {
+        this.password = passwordEncoder.encode(this.getPassword());
     }
 }
