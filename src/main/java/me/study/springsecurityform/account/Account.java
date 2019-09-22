@@ -28,7 +28,7 @@ public class Account {
         this.id = id;
     }
 
-    String getUsername() {
+    public String getUsername() {
         return username;
     }
 
@@ -36,7 +36,7 @@ public class Account {
         this.username = username;
     }
 
-    String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -44,7 +44,7 @@ public class Account {
         this.password = password;
     }
 
-    String getRole() {
+    public String getRole() {
         return role;
     }
 
@@ -52,7 +52,7 @@ public class Account {
         this.role = role;
     }
 
-    void encodePassword(PasswordEncoder passwordEncoder) {
+    public void encodePassword(PasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(this.getPassword());
     }
 }
