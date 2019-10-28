@@ -41,6 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .expressionHandler(securityExpressionHandler());
         http.formLogin();
         http.httpBasic();
+        http.logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/");
 
         SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
