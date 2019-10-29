@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("signUp")
+@RequestMapping("signup")
 public class SignUpController {
     @Autowired
     private AccountService accountService;
+
     @GetMapping
     public String signUpForm(Model model) {
         model.addAttribute("account", new Account());
-        return "signUp";
+        return "signup";
     }
 
     @PostMapping
