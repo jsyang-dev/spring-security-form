@@ -12,7 +12,7 @@
     <artifactId>spring-security-form</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-security-form</name>
-    <description>Project for studing spring security</description>
+    <description>Project for studying spring security</description>
 
     <properties>
         <java.version>1.8</java.version>
