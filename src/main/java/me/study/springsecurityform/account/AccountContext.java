@@ -8,6 +8,6 @@ public class AccountContext {
     }
 
     public static Account getAccount() {
-        return  ACCOUNT_THREAD_LOCAL.get();
+        return ACCOUNT_THREAD_LOCAL.get();
     }
 }
