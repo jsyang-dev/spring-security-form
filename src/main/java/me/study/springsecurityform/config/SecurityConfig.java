@@ -1,5 +1,7 @@
 package me.study.springsecurityform.config;
 
+import me.study.springsecurityform.account.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.SecurityExpressionHandler;
@@ -16,6 +18,8 @@ import org.springframework.security.web.access.expression.DefaultWebSecurityExpr
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private AccountService accountService;
 
     public SecurityExpressionHandler<FilterInvocation> securityExpressionHandler() {
         RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
@@ -59,6 +63,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     response.sendRedirect("/access-denied");
                 });
 
+        http.rememberMe()
+                .userDetailsService(this.accountService)
+                .key("remember-me-sample");
 
         SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
