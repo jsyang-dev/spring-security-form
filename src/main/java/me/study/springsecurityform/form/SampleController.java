@@ -1,7 +1,9 @@
 package me.study.springsecurityform.form;
 
+import me.study.springsecurityform.account.Account;
 import me.study.springsecurityform.account.AccountContext;
 import me.study.springsecurityform.account.AccountRepository;
+import me.study.springsecurityform.common.CurrentUser;
 import me.study.springsecurityform.common.SecurityLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,11 +23,11 @@ public class SampleController {
     AccountRepository accountRepository;
 
     @GetMapping("/")
-    public String index(Model model, Principal principal) {
-        if (principal == null) {
+    public String index(Model model, @CurrentUser Account account) {
+        if (account == null) {
             model.addAttribute("message", "Hello Spring Security");
         } else {
-            model.addAttribute("message", "Hello, " + principal.getName());
+            model.addAttribute("message", "Hello, " + account.getUsername());
         }
         return "index";
     }
