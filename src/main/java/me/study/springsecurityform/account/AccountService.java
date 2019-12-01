@@ -29,7 +29,7 @@ public class AccountService implements UserDetailsService {
                 .build();
     }
 
-    Account createNew(Account account) {
+    public Account createNew(Account account) {
         account.encodePassword(passwordEncoder);
         return this.accountRepository.save(account);
     }
