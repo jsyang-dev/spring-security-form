@@ -3,6 +3,7 @@ package me.study.springsecurityform.form;
 import me.study.springsecurityform.account.Account;
 import me.study.springsecurityform.account.AccountContext;
 import me.study.springsecurityform.account.AccountRepository;
+import me.study.springsecurityform.book.BookRepository;
 import me.study.springsecurityform.common.CurrentUser;
 import me.study.springsecurityform.common.SecurityLogger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,13 @@ import java.util.concurrent.Callable;
 @Controller
 public class SampleController {
     @Autowired
-    SampleService sampleService;
+    private SampleService sampleService;
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
 
     @GetMapping("/")
     public String index(Model model, @CurrentUser Account account) {
@@ -55,6 +59,7 @@ public class SampleController {
     @GetMapping("/user")
     public String user(Model model, Principal principal) {
         model.addAttribute("message", "Hello User, " + principal.getName());
+        model.addAttribute("books", this.bookRepository.findCurrentUserBooks());
         return "user";
     }
 
